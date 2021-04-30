@@ -1,0 +1,131 @@
+<!--Shop-->
+
+<script>
+    window.addEventListener("load", function(event){
+        myCart = new cart;
+        myCart.downloadCart();
+        myCart.calcTotal();
+        myCart.fillShoppingList();
+        myCart.addTotalToList("shopping-list-total");
+    })
+    document.getElementById("checkoutbtn").addEventListener("click", function(event){
+    console.log("button clicked");
+        myCart.uploadCart();
+        
+    });
+</script>
+
+<!--Shoping cart-->
+
+<script>
+    class cart{
+        constructor(){
+            this.cartItems = [];
+            this.cartTotal = 0;
+            this.counter = 0;
+        }
+        calcTotal(){
+            for(var i = 0; i < this.cartItems.length; i++){
+                this.cartItems[i].calcPurchasePrice();
+                this.counter += this.cartItems[i].purchasePrice;
+            }
+            this.cartTotal = (Math.round(100 * this.counter)) / 100;
+            this.counter = 0;
+        }
+        addTotalToList(id){
+            document.getElementById(id).innerHTML = "$" + this.cartTotal;
+        }
+      	fillShoppingList(){
+            for(var i= 0; i < this.cartItems.length; i++){
+                document.getElementById("checkout-list").innerHTML += '<div class="h-centered"><a href="#" class="trash w-button"></a><div class="little-margin">' + this.cartItems[i].productName + '</div><div class="little-margin">' + this.cartItems[i].productAmount + ' ' + this.cartItems[i].productUnit + '</div><div class="little-margin bold">$' + this.cartItems[i].purchasePrice + ' </div></div>';
+            }
+        }
+        fillCheckout(){
+            for(var i= 0; i < this.cartItems.length; i++){
+                document.getElementById("checkout-list").innerHTML += '<div class="h-centered"><div class="little-margin">' + this.cartItems[i].productName + '</div><div class="little-margin">' + this.cartItems[i].productAmount + ' ' + this.cartItems[i].productUnit + '</div><div class="little-margin bold">$' + this.cartItems[i].purchasePrice + ' </div></div>';
+            }
+        }
+        uploadCart(){
+            sessionStorage.setItem("Number", String(this.cartItems.length))
+            for(var i = 0; i < this.cartItems.length; i++){
+                sessionStorage.setItem("Product " + i + " Name", this.cartItems[i].productName);
+                sessionStorage.setItem("Product " + i + " Price", String(this.cartItems[i].productPrice));
+                sessionStorage.setItem("Product " + i + " Amount", String(this.cartItems[i].productAmount));
+                sessionStorage.setItem("Product " + i + " Quantity", String(this.cartItems[i].productQuantiy));
+                sessionStorage.setItem("Product " + i + " Unit", String(this.cartItems[i].productUnit));
+            }
+        }
+        downloadCart(){
+            for(var i = 0; i < Number(sessionStorage.getItem("Number")); i++){
+                const name = sessionStorage.getItem("Product " + i + " Name");
+                const price = sessionStorage.getItem("Product " + i + " Price");
+                const amount = sessionStorage.getItem("Product " + i + " Amount");
+                const quantity = sessionStorage.getItem("Product " + i + " Quantity");
+                const unit = sessionStorage.getItem("Product " + i + " Unit");
+                this.cartItems.push(new purchase(name, Number(price), Number(amount), Number(quantity), unit));
+            }
+        }
+    }
+    class purchase{
+        constructor(name, price, amount, quantity, unit){
+            this.productName = name;
+            this.productPrice = price;
+            this.productAmount = amount;
+            this.productQuantiy = quantity;
+            this.productUnit = unit;
+        }
+        calcPurchasePrice(){
+            this.purchasePrice = (Math.round(100 * this.productPrice * (this.productAmount / this.productQuantiy))) / 100;
+        }
+        createEntry(){
+            this.purchaseEntry = '<div class="h-centered"><a href="#" class="trash w-button"></a><div class="little-margin">' + this.productName + '</div><div class="little-margin">' + this.productAmount + ' ' + this.productUnit + '</div><div class="little-margin bold">$' + this.purchasePrice + ' </div></div>';
+        }
+        addEntryToList(){
+            document.getElementById("shopping-list").innerHTML += this.purchaseEntry;
+        }
+    }
+
+</script>
+
+<!--Cart Button-->
+
+<a id="NOMBREcrtbtn" href="#" class="button-1 add-to-cart w-button">Add to cart</a>
+
+<script>
+    var amount = 0;
+
+    document.getElementById("NOMBREcrtbtn").addEventListener('click', function (event){
+        amount = document.getElementById("NOMBREquantity").innerHTML;
+
+        var sale = new purchase("NOMBRE", PRECIO, amount, CANTIDAD, "UNIDAD")
+        myCart.cartItems.push(sale);
+        myCart.calcTotal();
+        sale.createEntry();
+        sale.addEntryToList();
+        myCart.addTotalToList("shopping-list-total");
+    })
+</script>
+
+<!--Quantity Input-->
+
+<div class="quantity-wrapper">
+    <div class="quantity">
+        <div id="NOMBREquantity" class="quantity-text">CANTIDAD</div>
+        <div class="quantity-text">UNIDAD</div>
+    </div>
+    <div>
+        <a id="NOMBREup" href="#" class="arrow up w-button"></a>
+        <a id="NOMBREdown" href="#" class="arrow down w-button"></a>
+    </div>
+</div>
+
+<script>
+    document.getElementById("NOMBREup").addEventListener("click", function(event){
+            document.getElementById("NOMBREquantity").innerHTML = String(Number(document.getElementById("NOMBREquantity").innerHTML) + CANTIDAD)
+    })
+    document.getElementById("NOMBREdown").addEventListener("click", function(event){
+        if(Number(document.getElementById("NOMBREquantity").innerHTML) != CANTIDAD){
+            document.getElementById("NOMBREquantity").innerHTML = String(Number(document.getElementById("NOMBREquantity").innerHTML) - CANTIDAD)
+        }
+    })
+</script>

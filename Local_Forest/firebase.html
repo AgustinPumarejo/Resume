@@ -1,0 +1,55 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+<!-- SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+     
+<script>
+
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyCxpvKzxW_910izihLkPj44lnt7eRQCAPk",
+        authDomain: "local-forest.firebaseapp.com",
+        databaseURL: "https://local-forest.firebaseio.com",
+        projectId: "local-forest",
+        storageBucket: "local-forest.appspot.com",
+        messagingSenderId: "439838871690",
+        appId: "1:439838871690:web:35fd71b4147d0531649d73",
+        measurementId: "G-9VZD4HPSCW"
+       };
+       // Initialize Firebase
+       firebase.initializeApp(firebaseConfig);
+       firebase.analytics();
+</script>
+     
+<!-- OBSERVER CODE -->
+    
+<!-- This goes in the site wide Head Code -->
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
+     
+    <!-- This goes in the site wide Footer Code -->
+<script>
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            console.log('User is logged in');
+        }
+        else {
+            console.log('No user is logged in');
+        }
+    })
+</script>
+     
+<!-- LOG OUT -->
+       
+<!-- This goes in the site wide Footer Code -->
+<script>
+    document.getElementById("btnLogOut").addEventListener('click', function (event) {
+        firebase.auth().signOut();
+        console.log('User was logged out');
+    })
+</script>
+
+<!-- Code inspired from: https://gist.github.com/jason-dark-->

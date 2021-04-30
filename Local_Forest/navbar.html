@@ -1,0 +1,32 @@
+<!-- NAVBAR HIDER -->
+
+<!-- This goes at the top of the site wide Head Code -->
+<style>
+    .hide {
+      display: none;
+  }
+</style>
+
+<!-- NAVBAR UPDATE -->
+
+<!-- This goes in the site wide Footer Code -->
+<script>
+    firebase.auth().onAuthStateChanged(user => {
+        // If user is logged in then show log out button, profile button BUT hide the log in button
+            if (user) {
+              	document.getElementById("lineLogedIn").style.display = 'flex';
+                document.getElementById("btnLogOut").style.display = 'flex';
+                document.getElementById("btnProfile").style.display = 'flex';
+                document.getElementById("btnLogIn").style.display = 'none';
+            }
+            // If user is logged out then show log in button BUT hide the log out button and profile button  
+            else {
+              	document.getElementById("lineLogedIn").style.display = 'none';
+                document.getElementById("btnLogIn").style.display = 'flex';
+                document.getElementById("btnLogOut").style.display = 'none';
+                document.getElementById("btnProfile").style.display = 'none';
+            }
+    })
+</script>
+
+<!-- Code inspired from: https://gist.github.com/jason-dark-->

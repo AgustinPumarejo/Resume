@@ -1,0 +1,14 @@
+<!--Checkout-->
+
+<script>
+    window.addEventListener("load", function(event){
+        myCart = new cart
+        myCart.downloadCart();
+        myCart.calcTotal();
+        myCart.fillCheckout();
+        myCart.addTotalToList("checkout-list-total");
+    })
+    document.getElementById("confirm-purchase").addEventListener("click", function(event){
+        sessionStorage.clear();
+    });
+</script>
