@@ -13,9 +13,8 @@ The simplest way to run it is direcly with the mesa visalization module which on
 1. Pull the repository
 2. Create an environment using the environment.yml file and activate it.
 
-`conda env create -f environment.yml
-
-conda activate TrafficModel`
+`conda env create -f environment.yml`
+`conda activate TrafficModel`
 
 3. Run the server.py script
 
