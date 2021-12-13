@@ -12,8 +12,10 @@ The simplest way to run it is direcly with the mesa visalization module which on
 
 1. Pull the repository
 2. Create an environment using the environment.yml file
-`conda env create -f environment.yml'
+
+`conda env create -f environment.yml`
 3. Run the server.py script
+
 `python .\server.py`
     
 If you want to run the simulation in Unity, you need to install it and open a project from the Traffic Model folder using version 2020.3.22f1. Then, repeat the steps above but instead run the unity.py script in the end and once the server is running, open Unity, go to the BuildCity scene and run it.
