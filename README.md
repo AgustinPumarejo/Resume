@@ -11,9 +11,10 @@ Traffic simulation. It has two directories, the Mesa one which creates server an
 The simplest way to run it is direcly with the mesa visalization module which only requires anaconda or miniconda and can be done in the following way.
 
 1. Pull the repository
-2. Create an environment using the environment.yml file
+2. Create an environment using the environment.yml file and activate it.
 
-`conda env create -f environment.yml`
+`conda env create -f environment.yml
+conda activate TrafficModel`
 
 3. Run the server.py script
 
