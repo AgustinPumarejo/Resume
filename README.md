@@ -14,6 +14,7 @@ The simplest way to run it is direcly with the mesa visalization module which on
 2. Create an environment using the environment.yml file
 
 `conda env create -f environment.yml`
+
 3. Run the server.py script
 
 `python .\server.py`
