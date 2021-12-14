@@ -1,0 +1,78 @@
+@startuml
+set namespaceSeparator ::
+
+class "difapp::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "difapp::main.dart::MyApp"
+
+class "difapp::main.dart::LoginPage" {
+  +State<StatefulWidget> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "difapp::main.dart::LoginPage"
+
+class "difapp::main.dart::_State" {
+  +TextEditingController nameController
+  +TextEditingController passwordController
+  +Widget build()
+}
+
+"difapp::main.dart::_State" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "difapp::main.dart::_State"
+
+class "difapp::main.dart::CategoriesScreen" {
+  +List<String> list
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "difapp::main.dart::CategoriesScreen"
+
+class "difapp::main.dart::SubcategoriesScreen" {
+  +String category
+  +List<String> list
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "difapp::main.dart::SubcategoriesScreen"
+
+class "difapp::main.dart::ServicesScreen" {
+  +String subCategory
+  +List<String> list
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "difapp::main.dart::ServicesScreen"
+
+class "difapp::main.dart::ServiceRequest" {
+  +ServiceDetail one
+  +ServiceDetail two
+  +ServiceDetail three
+}
+
+"difapp::main.dart::ServiceRequest" o-- "difapp::main.dart::ServiceDetail"
+
+class "difapp::main.dart::ServiceDetail" {
+  +int idServicio
+  +String direccion
+  +String descripcion
+  +int fechaPublicacion
+  +int fechaVencimiento
+  +double cuota
+  +String imagen
+  +String subcategoria
+  +int fechaCreacion
+  +int fechaModificacion
+}
+
+class "difapp::main.dart::ServiceDetailScreen" {
+  +String service
+  +Future<ServiceRequest> serviceDetails
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "difapp::main.dart::ServiceDetailScreen"
+
+
+@enduml
