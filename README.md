@@ -28,5 +28,8 @@ This one has a readme of its own that specifies the requirements for running the
 
 Running the "juego" HTML file locally, found inside "Frontend", should allow you to play the game and use the page but the database will not be functional.
 
+## DIF
+This one is a mobile app created using flutter and Android Studio. Unfortunately, the app only works if a server is active and the server we used was on a teamate's AWS account. However the code is still there inside the lib folder and all the documentation is in this drive: https://drive.google.com/drive/folders/1Adl4OGIedpogufbzcY-cO8lL-YJTU9R2?usp=sharing
+
 ## Syntax Highlighter
 This is a program that receives a css file and outputs an html file with its syntax highlighted. To test the file, on needs to install racket and preferable Dr. Racket as well and run this command “(directory-CSS-To-HTML 1)”. All css files that are on the same folder as the syntax highlighter will be converted. There is a sample file with its html file already created.
