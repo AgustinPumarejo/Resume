@@ -1,8 +1,4 @@
 # Resume
-## Fundación Cura
-This project contains only documentation so far and all of it is in Spanish.
-
-URL to Drive: https://drive.google.com/drive/folders/1YLukZtwkKuiUkq_IucbsCdgBmQ8D1fGR?usp=sharing
 
 ## Multi-Agent Simulation
 Traffic simulation. It has two directories, the Mesa one which creates server and it can be used to visualize the simulation through a webpage and Traffic Model which is a Unity project that calls the server and displays the simulation using 3D graphics. **It also contains demo.mp4 which shows how the program works.**
@@ -41,6 +37,11 @@ In this project, a teammate and I used several algorithms related to graphs in o
 4. Closest pair of districts (in this one we used a set of point in a plane as an input instead of a graph)
 
 To calculate this we used Depth Fist Search, Floyd-Warshal for calculating the shortest path, Ford-Fulkerson for the maximum flow algorithm, krustal's for the minimum spanning tree and the closest pair of points algorithm.
+
+## Fundación Cura
+This project contains only documentation so far and all of it is in Spanish.
+
+URL to Drive: https://drive.google.com/drive/folders/1YLukZtwkKuiUkq_IucbsCdgBmQ8D1fGR?usp=sharing
 
 ## Syntax Highlighter
 This is a program that receives a css file and outputs an html file with its syntax highlighted. To test the file, on needs to install racket and preferable Dr. Racket as well and run this command “(directory-CSS-To-HTML 1)”. All css files that are on the same folder as the syntax highlighter will be converted. There is a sample file with its html file already created.
