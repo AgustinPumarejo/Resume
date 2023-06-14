@@ -1,6 +1,0 @@
-package com.example.dif_2
-
-import io.flutter.embedding.android.FlutterActivity
-
-class MainActivity: FlutterActivity() {
-}
